@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import actions from '../../duck/actions';
 
 const FormContainer = props => {
-  console.log(props);
   return (
     <>
       <AccountInfo {...props} />
