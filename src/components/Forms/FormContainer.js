@@ -2,10 +2,12 @@ import React from 'react';
 import AccountInfo from './AccountInfo';
 import { connect } from 'react-redux';
 import actions from '../../duck/actions';
+import PersonalDetails from './PersonalDetails';
 
 const FormContainer = props => {
   return (
     <>
+      <PersonalDetails {...props} />
       <AccountInfo {...props} />
     </>
   );
