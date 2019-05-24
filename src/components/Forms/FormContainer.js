@@ -19,9 +19,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setNick: text => dispatch(actions.setNick(text)),
-  setEmail: text => dispatch(actions.setEmail(text)),
-  setPassword: text => dispatch(actions.setPassword(text)),
   setField: (field, text) => dispatch(actions.setField(field, text))
 });
 export default connect(

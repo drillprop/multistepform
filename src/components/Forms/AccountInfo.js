@@ -21,7 +21,7 @@ const StyledH3 = styled(Typography)`
 `;
 
 const AccountInfo = props => {
-  const { nick, email, password, setNick, setEmail, setPassword } = props;
+  const { nick, email, password, setField } = props;
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -33,7 +33,7 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={nick}
-            onChange={e => setNick(e.currentTarget.value)}
+            onChange={e => setField('nick', e.currentTarget.value)}
             autoFocus={true}
             margin='normal'
             label='Nick'
@@ -41,7 +41,7 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={email}
-            onChange={e => setEmail(e.currentTarget.value)}
+            onChange={e => setField('email', e.currentTarget.value)}
             margin='normal'
             type='email'
             label='Email'
@@ -49,7 +49,7 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={password}
-            onChange={e => setPassword(e.currentTarget.value)}
+            onChange={e => setField('password', e.currentTarget.value)}
             margin='normal'
             type='password'
             label='Password'
