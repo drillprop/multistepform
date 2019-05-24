@@ -5,7 +5,7 @@ import {
   InputLabel,
   Radio,
   FormControlLabel,
-  Box
+  FormGroup
 } from '@material-ui/core';
 import {
   StyledPaper,
@@ -45,13 +45,13 @@ const PersonalDetails = props => {
 
           <StyledRadioGroup>
             <InputLabel display='block'>Gender</InputLabel>
-            <Grid container direction='row' justify='center'>
+            <FormGroup row>
               <FormControlLabel
                 label='Male'
                 control={<Radio color='primary' />}
               />
               <FormControlLabel label='Female' control={<Radio />} />
-            </Grid>
+            </FormGroup>
           </StyledRadioGroup>
           <StyledTextField
             InputLabelProps={{ shrink: true }}
