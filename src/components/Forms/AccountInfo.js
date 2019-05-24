@@ -1,24 +1,6 @@
 import React from 'react';
-import { TextField, Paper, Grid, Typography, Button } from '@material-ui/core';
-import styled from 'styled-components';
-
-const StyledPaper = styled(Paper)`
-  width: 28rem;
-  padding: 3rem 0;
-`;
-const StyledTextField = styled(TextField)`
-  width: 200px;
-`;
-const StyledButton = styled(Button)`
-  && {
-    margin-top: 2.5rem;
-  }
-`;
-const StyledH3 = styled(Typography)`
-  && {
-    margin-bottom: 1rem;
-  }
-`;
+import { Grid, Typography } from '@material-ui/core';
+import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 
 const AccountInfo = props => {
   const { nick, email, password, setField } = props;
