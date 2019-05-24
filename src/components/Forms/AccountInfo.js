@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextField, Paper, Grid, Typography, Button } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -20,10 +20,8 @@ const StyledH3 = styled(Typography)`
   }
 `;
 
-const AccountInfo = () => {
-  const [nick, setNick] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const AccountInfo = props => {
+  const { nick, email, password, setNick, setEmail, setPassword } = props;
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -33,6 +31,7 @@ const AccountInfo = () => {
             Account
           </StyledH3>
           <StyledTextField
+            required
             value={nick}
             onChange={e => setNick(e.currentTarget.value)}
             autoFocus={true}
@@ -40,6 +39,7 @@ const AccountInfo = () => {
             label='Nick'
           />
           <StyledTextField
+            required
             value={email}
             onChange={e => setEmail(e.currentTarget.value)}
             margin='normal'
@@ -47,6 +47,7 @@ const AccountInfo = () => {
             label='Email'
           />
           <StyledTextField
+            required
             value={password}
             onChange={e => setPassword(e.currentTarget.value)}
             margin='normal'
