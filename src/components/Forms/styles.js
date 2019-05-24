@@ -18,5 +18,15 @@ const StyledH3 = styled(Typography)`
     margin-bottom: 1rem;
   }
 `;
+const StyledRadioGroup = styled.div`
+  width: 200px;
+  margin-top: 2rem;
+`;
 
-export { StyledButton, StyledH3, StyledPaper, StyledTextField };
+export {
+  StyledButton,
+  StyledH3,
+  StyledPaper,
+  StyledTextField,
+  StyledRadioGroup
+};
