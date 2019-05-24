@@ -14,5 +14,9 @@ const setPassword = text => ({
   type: PASSWORD,
   text
 });
+const setField = (field, text) => ({
+  type: SET_FIELD,
+  [field]: text
+});
 
-export default { setEmail, setNick, setPassword };
+export default { setEmail, setNick, setPassword, setField };
