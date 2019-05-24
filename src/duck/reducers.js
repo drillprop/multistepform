@@ -1,6 +1,12 @@
 import { NICK, EMAIL, PASSWORD } from './types';
 
-const userReducer = (state, action) => {
+const initialState = {
+  nick: '',
+  email: '',
+  password: ''
+};
+
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case NICK:
       return {
