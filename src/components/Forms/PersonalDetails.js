@@ -1,6 +1,19 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
+import {
+  Grid,
+  Typography,
+  InputLabel,
+  Radio,
+  FormControlLabel,
+  Box
+} from '@material-ui/core';
+import {
+  StyledPaper,
+  StyledH3,
+  StyledTextField,
+  StyledButton,
+  StyledRadioGroup
+} from './styles';
 
 const PersonalDetails = props => {
   const { firstName, secondName, dateOfBirth, setField } = props;
@@ -12,6 +25,7 @@ const PersonalDetails = props => {
           <StyledH3 color='primary' variant='h3'>
             Details
           </StyledH3>
+
           <StyledTextField
             required
             value={firstName}
@@ -28,6 +42,17 @@ const PersonalDetails = props => {
             type='text'
             label='Second Name'
           />
+
+          <StyledRadioGroup>
+            <InputLabel display='block'>Gender</InputLabel>
+            <Grid container direction='row' justify='center'>
+              <FormControlLabel
+                label='Male'
+                control={<Radio color='primary' />}
+              />
+              <FormControlLabel label='Female' control={<Radio />} />
+            </Grid>
+          </StyledRadioGroup>
           <StyledTextField
             InputLabelProps={{ shrink: true }}
             value={dateOfBirth}
