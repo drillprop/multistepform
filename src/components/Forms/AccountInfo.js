@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextField, Paper, Grid, Typography, Button } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -21,6 +21,9 @@ const StyledH3 = styled(Typography)`
 `;
 
 const AccountInfo = () => {
+  const [nick, setNick] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -29,15 +32,27 @@ const AccountInfo = () => {
           <StyledH3 color='primary' variant='h3'>
             Account
           </StyledH3>
-          <StyledTextField margin='normal' label='Nick'>
-            Hello
-          </StyledTextField>
-          <StyledTextField margin='normal' type='email' label='Email'>
-            Hello
-          </StyledTextField>
-          <StyledTextField margin='normal' type='password' label='Password'>
-            Hello
-          </StyledTextField>
+          <StyledTextField
+            value={nick}
+            onChange={e => setNick(e.currentTarget.value)}
+            autoFocus={true}
+            margin='normal'
+            label='Nick'
+          />
+          <StyledTextField
+            value={email}
+            onChange={e => setEmail(e.currentTarget.value)}
+            margin='normal'
+            type='email'
+            label='Email'
+          />
+          <StyledTextField
+            value={password}
+            onChange={e => setPassword(e.currentTarget.value)}
+            margin='normal'
+            type='password'
+            label='Password'
+          />
           <StyledButton color='primary' variant='contained'>
             Next Step
           </StyledButton>
