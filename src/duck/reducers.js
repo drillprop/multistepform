@@ -3,7 +3,10 @@ import { SET_FIELD } from './types';
 const initialState = {
   nick: '',
   email: '',
-  password: ''
+  password: '',
+  firstName: '',
+  secondName: '',
+  dateOfBirth: ''
 };
 
 const userReducer = (state = initialState, action) => {
