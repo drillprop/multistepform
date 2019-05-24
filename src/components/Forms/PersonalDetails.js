@@ -29,10 +29,11 @@ const PersonalDetails = props => {
             label='Second Name'
           />
           <StyledTextField
+            InputLabelProps={{ shrink: true }}
             value={dateOfBirth}
             onChange={e => setField('dateOfBirth', e.currentTarget.value)}
             margin='normal'
-            type='text'
+            type='date'
             label='Date of Birth'
           />
           <StyledButton color='primary' variant='contained'>
