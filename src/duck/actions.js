@@ -21,4 +21,4 @@ const setPassword = text => {
   };
 };
 
-export { setEmail, setNick, setPassword };
+export default { setEmail, setNick, setPassword };
