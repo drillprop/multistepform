@@ -6,7 +6,7 @@ import { Grid, Paper, Button } from '@material-ui/core';
 import styled from 'styled-components';
 
 const StyledGrid = styled(Grid)`
-  width: 45rem;
+  width: 28rem;
 `;
 
 const AppStepper = () => {
