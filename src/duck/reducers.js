@@ -1,4 +1,4 @@
-import { NICK, EMAIL, PASSWORD } from './types';
+import { NICK, EMAIL, PASSWORD, SET_FIELD } from './types';
 
 const initialState = {
   nick: '',
@@ -12,6 +12,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         nick: action.text
+      };
+    case SET_FIELD:
+      return {
+        ...state,
+        [action.field]: action.text
       };
     case EMAIL:
       return {
