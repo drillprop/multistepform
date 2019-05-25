@@ -16,7 +16,8 @@ import {
 } from './styles';
 
 const PersonalDetails = props => {
-  const { firstName, secondName, dateOfBirth, gender, setField } = props;
+  const { firstName, secondName, dateOfBirth, gender } = props.user;
+  const { setField } = props;
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>

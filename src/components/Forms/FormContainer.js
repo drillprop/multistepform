@@ -16,17 +16,7 @@ const FormContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  nick: state.nick,
-  email: state.email,
-  password: state.password,
-  firstName: state.firstName,
-  secondName: state.secondName,
-  dateOfBirth: state.dateOfBirth,
-  gender: state.gender,
-  country: state.country,
-  city: state.city,
-  adress: state.adress,
-  phone: state.phon
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

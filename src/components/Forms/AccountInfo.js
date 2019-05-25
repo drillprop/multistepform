@@ -3,7 +3,9 @@ import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 
 const AccountInfo = props => {
-  const { nick, email, password, setField } = props;
+  const { nick, email, password } = props.user;
+  const { setField } = props;
+  console.log(props);
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>

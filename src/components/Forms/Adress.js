@@ -5,7 +5,8 @@ import Select from 'react-select';
 import countries from '../../utils/countries';
 
 const Adress = props => {
-  const { country, city, adress, phone, setField } = props;
+  const { country, city, adress, phone } = props.user;
+  const { setField } = props;
   const labeledCountries = countries.map(country => ({ label: country }));
   return (
     <StyledPaper elevation={4}>

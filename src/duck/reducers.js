@@ -1,17 +1,19 @@
 import { SET_FIELD } from './types';
 
 const initialState = {
-  nick: '',
-  email: '',
-  password: '',
-  firstName: '',
-  secondName: '',
-  dateOfBirth: '',
-  gender: '',
-  country: '',
-  city: '',
-  adress: '',
-  phone: ''
+  user: {
+    nick: '',
+    email: '',
+    password: '',
+    firstName: '',
+    secondName: '',
+    dateOfBirth: '',
+    gender: '',
+    country: '',
+    city: '',
+    adress: '',
+    phone: ''
+  }
 };
 
 const userReducer = (state = initialState, action) => {
@@ -19,7 +21,10 @@ const userReducer = (state = initialState, action) => {
     case SET_FIELD:
       return {
         ...state,
-        [action.field]: action.text
+        user: {
+          ...state.user,
+          [action.field]: action.text
+        }
       };
     default:
       return state;
