@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
+import {
+  StyledPaper,
+  StyledH3,
+  StyledTextField,
+  StyledButton,
+  StyledErrorText
+} from './styles';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
-  const [valid, setValidation] = useState(true);
+  const [validationMessage, setValidationMessage] = useState('');
+  const [valid, setValidation] = useState('');
+  const handleChangeAndValidation = e => {
+    const { value } = e.currentTarget;
+    setValidation(e.target.validity.valid);
+    setField('email', value);
+  };
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -25,15 +37,25 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={email}
-            onChange={e => {
-              setValidation(e.target.validity.valid);
-              setField('email', e.currentTarget.value);
-            }}
-            error={!valid}
+            onChange={handleChangeAndValidation}
+            error={!!validationMessage}
+            onFocus={() => setValidationMessage('')}
+            onBlur={e =>
+              e.currentTarget.value &&
+              setValidationMessage(e.target.validationMessage)
+            }
             margin='normal'
             type='email'
             label='Email'
           />
+          <StyledErrorText
+            color='error'
+            variant='caption'
+            display='block'
+            gutterBottom
+          >
+            {validationMessage}
+          </StyledErrorText>
           <StyledTextField
             required
             value={password}
