@@ -16,11 +16,14 @@ const FormContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  activeStep: state.activeStep
 });
 
 const mapDispatchToProps = dispatch => ({
-  setField: (field, text) => dispatch(actions.setField(field, text))
+  setField: (field, text) => dispatch(actions.setField(field, text)),
+  setActiveStep: (activeStep, number) =>
+    dispatch(actions.setActiveStep(activeStep, number))
 });
 export default connect(
   mapStateToProps,
