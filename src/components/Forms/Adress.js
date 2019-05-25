@@ -6,7 +6,7 @@ import countries from '../../utils/countries';
 
 const Adress = props => {
   const { country, city, adress, phone } = props.user;
-  const { setField } = props;
+  const { setField, setActiveStep, activeStep } = props;
   const labeledCountries = countries.map(country => ({ label: country }));
   return (
     <StyledPaper elevation={4}>
@@ -62,9 +62,22 @@ const Adress = props => {
             type='phone'
             label='Phone'
           />
-          <StyledButton type='submit' color='primary' variant='contained'>
-            Submit
-          </StyledButton>
+          <Grid container justify='space-around'>
+            <StyledButton
+              onClick={() => setActiveStep(activeStep, -1)}
+              variant='contained'
+            >
+              Back
+            </StyledButton>
+            <StyledButton
+              onClick={() => setActiveStep(activeStep, 1)}
+              color='primary'
+              variant='contained'
+              disabled={!(country && city && adress && phone)}
+            >
+              Next Step
+            </StyledButton>
+          </Grid>
         </Grid>
       </form>
     </StyledPaper>

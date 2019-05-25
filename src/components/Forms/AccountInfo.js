@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, ButtonBase, FormGroup } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
-  const { setField } = props;
+  const { setField, setActiveStep, activeStep } = props;
   console.log(props);
   return (
     <StyledPaper elevation={4}>
@@ -38,7 +38,12 @@ const AccountInfo = props => {
             type='password'
             label='Password'
           />
-          <StyledButton color='primary' variant='contained'>
+          <StyledButton
+            onClick={() => setActiveStep(activeStep, 1)}
+            color='primary'
+            variant='contained'
+            disabled={!(nick && email && password)}
+          >
             Next Step
           </StyledButton>
         </Grid>

@@ -6,13 +6,12 @@ import PersonalDetails from './PersonalDetails';
 import Adress from './Adress';
 
 const FormContainer = props => {
-  return (
-    <>
-      <Adress {...props} />
-      <PersonalDetails {...props} />
-      <AccountInfo {...props} />
-    </>
-  );
+  const steps = [
+    <AccountInfo {...props} />,
+    <PersonalDetails {...props} />,
+    <Adress {...props} />
+  ];
+  return <>{steps[props.activeStep]}</>;
 };
 
 const mapStateToProps = state => ({

@@ -17,7 +17,7 @@ import {
 
 const PersonalDetails = props => {
   const { firstName, secondName, dateOfBirth, gender } = props.user;
-  const { setField } = props;
+  const { setField, setActiveStep, activeStep } = props;
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -68,9 +68,22 @@ const PersonalDetails = props => {
             type='date'
             label='Date of Birth'
           />
-          <StyledButton color='primary' variant='contained'>
-            Next Step
-          </StyledButton>
+          <Grid container justify='space-around'>
+            <StyledButton
+              onClick={() => setActiveStep(activeStep, -1)}
+              variant='contained'
+            >
+              Back
+            </StyledButton>
+            <StyledButton
+              onClick={() => setActiveStep(activeStep, 1)}
+              color='primary'
+              variant='contained'
+              disabled={!(firstName && secondName && gender && dateOfBirth)}
+            >
+              Next Step
+            </StyledButton>
+          </Grid>
         </Grid>
       </form>
     </StyledPaper>
