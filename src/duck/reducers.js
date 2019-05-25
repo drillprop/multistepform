@@ -1,4 +1,4 @@
-import { SET_FIELD, INC_STEP, DEC_STEP } from './types';
+import { SET_FIELD, SET_STEP } from './types';
 
 const initialState = {
   user: {
@@ -27,15 +27,10 @@ const userReducer = (state = initialState, action) => {
           [action.field]: action.text
         }
       };
-    case INC_STEP:
+    case SET_STEP:
       return {
         ...state,
-        activeStep: state.activeStep !== 3 ? state.activeStep + 1 : 3
-      };
-    case DEC_STEP:
-      return {
-        ...state,
-        activeStep: state.activeStep !== 0 ? state.activeStep - 1 : 0
+        activeStep: action.activeStep
       };
     default:
       return state;

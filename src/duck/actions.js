@@ -6,9 +6,9 @@ const setField = (field, text) => ({
   text
 });
 
-const setActiveStep = activeStep => ({
+const setActiveStep = (activeStep, number) => ({
   type: SET_STEP,
-  activeStep: 1
+  activeStep: activeStep + number
 });
 
 export default { setField, setActiveStep };
