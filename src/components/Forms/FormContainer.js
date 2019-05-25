@@ -6,22 +6,23 @@ import PersonalDetails from './PersonalDetails';
 import Adress from './Adress';
 import { useTransition, animated } from 'react-spring';
 
-const AnimatedAccountInfo = animated(AccountInfo);
-const AnimatedPersonalDetails = animated(PersonalDetails);
-const AnimatedAdress = animated(Adress);
-const animatedSteps = [
-  AnimatedAccountInfo,
-  AnimatedPersonalDetails,
-  AnimatedAdress
-];
-
 const FormContainer = props => {
   const steps = [
     <AccountInfo {...props} />,
     <PersonalDetails {...props} />,
     <Adress {...props} />
   ];
-  return steps[0];
+  const transitions = useTransition(props.activeStep, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0, position: 'absolute', top: '12rem' }
+  });
+  console.log(transitions);
+  return transitions.map(({ item, key, props }) => (
+    <animated.div style={props} key={item}>
+      {steps[item]}
+    </animated.div>
+  ));
 };
 
 const mapStateToProps = state => ({
