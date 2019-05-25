@@ -7,7 +7,11 @@ const initialState = {
   firstName: '',
   secondName: '',
   dateOfBirth: '',
-  gender: ''
+  gender: '',
+  country: '',
+  city: '',
+  adress: '',
+  phone: ''
 };
 
 const userReducer = (state = initialState, action) => {
