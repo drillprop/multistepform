@@ -1,11 +1,11 @@
-import React from 'react';
-import { Grid, Typography, ButtonBase, FormGroup } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
-  console.log(props);
+  const [valid, setValidation] = useState(true);
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -25,7 +25,11 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={email}
-            onChange={e => setField('email', e.currentTarget.value)}
+            onChange={e => {
+              setValidation(e.target.validity.valid);
+              setField('email', e.currentTarget.value);
+            }}
+            error={!valid}
             margin='normal'
             type='email'
             label='Email'
@@ -42,7 +46,7 @@ const AccountInfo = props => {
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
             variant='contained'
-            disabled={!(nick && email && password)}
+            disabled={!(nick && email && password) || !valid}
           >
             Next Step
           </StyledButton>
