@@ -4,6 +4,16 @@ import { connect } from 'react-redux';
 import actions from '../../duck/actions';
 import PersonalDetails from './PersonalDetails';
 import Adress from './Adress';
+import { useTransition, animated } from 'react-spring';
+
+const AnimatedAccountInfo = animated(AccountInfo);
+const AnimatedPersonalDetails = animated(PersonalDetails);
+const AnimatedAdress = animated(Adress);
+const animatedSteps = [
+  AnimatedAccountInfo,
+  AnimatedPersonalDetails,
+  AnimatedAdress
+];
 
 const FormContainer = props => {
   const steps = [
@@ -11,7 +21,7 @@ const FormContainer = props => {
     <PersonalDetails {...props} />,
     <Adress {...props} />
   ];
-  return <>{steps[props.activeStep]}</>;
+  return steps[0];
 };
 
 const mapStateToProps = state => ({
