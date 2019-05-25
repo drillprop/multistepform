@@ -12,11 +12,11 @@ const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
   const [validationMessage, setValidationMessage] = useState('');
-  const [valid, setValidation] = useState('');
+  const [valid, setValidation] = useState(true);
   const handleChangeAndValidation = e => {
-    const { value } = e.currentTarget;
+    const { id, value } = e.currentTarget;
     setValidation(e.target.validity.valid);
-    setField('email', value);
+    setField(id, value);
   };
   return (
     <StyledPaper elevation={4}>
@@ -29,7 +29,8 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={nick}
-            onChange={e => setField('nick', e.currentTarget.value)}
+            id='nick'
+            onChange={handleChangeAndValidation}
             autoFocus={true}
             margin='normal'
             label='Nick'
@@ -37,6 +38,7 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={email}
+            id='email'
             onChange={handleChangeAndValidation}
             error={!!validationMessage}
             onFocus={() => setValidationMessage('')}
@@ -58,8 +60,9 @@ const AccountInfo = props => {
           </StyledErrorText>
           <StyledTextField
             required
+            id='password'
             value={password}
-            onChange={e => setField('password', e.currentTarget.value)}
+            onChange={handleChangeAndValidation}
             margin='normal'
             type='password'
             label='Password'
