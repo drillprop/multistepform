@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 const PersonalDetails = props => {
-  const { firstName, secondName, dateOfBirth, setField } = props;
+  const { firstName, secondName, dateOfBirth, gender, setField } = props;
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -42,15 +42,21 @@ const PersonalDetails = props => {
             type='text'
             label='Second Name'
           />
-
           <StyledRadioGroup>
             <InputLabel display='block'>Gender</InputLabel>
             <FormGroup row>
               <FormControlLabel
+                checked={gender === 'male'}
+                onChange={() => setField('gender', 'male')}
                 label='Male'
                 control={<Radio color='primary' />}
               />
-              <FormControlLabel label='Female' control={<Radio />} />
+              <FormControlLabel
+                checked={gender === 'female'}
+                onChange={() => setField('gender', 'female')}
+                label='Female'
+                control={<Radio />}
+              />
             </FormGroup>
           </StyledRadioGroup>
           <StyledTextField
