@@ -18,6 +18,11 @@ const StyledH3 = styled(Typography)`
     margin-bottom: 1rem;
   }
 `;
+const StyledErrorText = styled(Typography)`
+  && {
+    width: 200px;
+  }
+`;
 const StyledRadioGroup = styled.div`
   width: 200px;
   margin-top: 2rem;
@@ -28,5 +33,6 @@ export {
   StyledH3,
   StyledPaper,
   StyledTextField,
-  StyledRadioGroup
+  StyledRadioGroup,
+  StyledErrorText
 };
