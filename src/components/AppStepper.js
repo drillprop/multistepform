@@ -14,7 +14,6 @@ const StyledGrid = styled(Grid)`
 
 const AppStepper = ({ activeStep }) => {
   const steps = ['Account', 'Personal', 'Adress'];
-  console.log(activeStep);
   return (
     <StyledGrid item xs={8} xl={12}>
       <Paper elevation={1}>

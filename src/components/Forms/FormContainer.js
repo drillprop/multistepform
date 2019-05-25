@@ -17,7 +17,6 @@ const FormContainer = props => {
     enter: { opacity: 1 },
     leave: { opacity: 0, position: 'absolute', top: '12rem' }
   });
-  console.log(transitions);
   return transitions.map(({ item, key, props }) => (
     <animated.div style={props} key={item}>
       {steps[item]}
