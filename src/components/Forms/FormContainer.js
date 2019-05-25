@@ -19,7 +19,8 @@ const mapStateToProps = state => ({
   password: state.password,
   firstName: state.firstName,
   secondName: state.secondName,
-  dateOfBirth: state.dateOfBirth
+  dateOfBirth: state.dateOfBirth,
+  gender: state.gender
 });
 
 const mapDispatchToProps = dispatch => ({

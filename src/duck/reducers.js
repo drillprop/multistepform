@@ -6,7 +6,8 @@ const initialState = {
   password: '',
   firstName: '',
   secondName: '',
-  dateOfBirth: ''
+  dateOfBirth: '',
+  gender: 'male'
 };
 
 const userReducer = (state = initialState, action) => {
