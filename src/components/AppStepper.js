@@ -2,11 +2,14 @@ import React from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import { Grid, Paper, Button } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import styled from 'styled-components';
 
 const StyledGrid = styled(Grid)`
   width: 28rem;
+  && {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const AppStepper = () => {
@@ -23,7 +26,6 @@ const AppStepper = () => {
           ))}
         </Stepper>
       </Paper>
-      <Button onClick={() => setActiveStep(activeStep + 1)}> Next</Button>
     </StyledGrid>
   );
 };
