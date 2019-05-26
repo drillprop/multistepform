@@ -5,12 +5,14 @@ import actions from '../../duck/actions';
 import PersonalDetails from './PersonalDetails';
 import Adress from './Adress';
 import { useTransition, animated } from 'react-spring';
+import Summary from './Summary';
 
 const FormContainer = props => {
   const steps = [
     <AccountInfo {...props} />,
     <PersonalDetails {...props} />,
-    <Adress {...props} />
+    <Adress {...props} />,
+    <Summary {...props} />
   ];
   const transitions = useTransition(props.activeStep, null, {
     from: { opacity: 0, height: 0 },
