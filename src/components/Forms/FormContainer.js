@@ -13,9 +13,9 @@ const FormContainer = props => {
     <Adress {...props} />
   ];
   const transitions = useTransition(props.activeStep, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0, position: 'absolute', top: '12rem' }
+    from: { opacity: 0, height: 0 },
+    enter: { opacity: 1, height: 'auto' },
+    leave: { opacity: 0, height: 0 }
   });
   return transitions.map(({ item, key, props }) => (
     <animated.div style={props} key={item}>
