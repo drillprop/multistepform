@@ -6,17 +6,14 @@ import ValidationError from './ValidationError';
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
-  const [validationMessage, setValidationMessage] = useState('');
   const [valid, setValidation] = useState({
     nick: false,
     email: false,
     password: false
   });
-  const handleChangeAndValidation = e => {
+  const handleChange = e => {
     const { id, value } = e.currentTarget;
-    setValidation({ ...valid, [id]: e.target.validity.valid });
     setField(id, value);
-    console.log(valid);
   };
 
   return (
@@ -31,7 +28,7 @@ const AccountInfo = props => {
             required
             value={nick}
             id='nick'
-            onChange={handleChangeAndValidation}
+            onChange={handleChange}
             autoFocus={true}
             margin='normal'
             label='Nick'
@@ -40,23 +37,23 @@ const AccountInfo = props => {
             required
             value={email}
             id='email'
-            onChange={handleChangeAndValidation}
-            error={!!validationMessage}
-            onFocus={() => setValidationMessage('')}
-            onBlur={e =>
-              e.currentTarget.value &&
-              setValidationMessage(e.target.validationMessage)
-            }
+            onChange={handleChange}
+            // error={!!validationMessage}
+            // onFocus={() => setValidationMessage('')}
+            // onBlur={e =>
+            //   e.currentTarget.value &&
+            //   setValidationMessage(e.target.validationMessage)
+            // }
             margin='normal'
             type='email'
             label='Email'
           />
-          <ValidationError validationMessage={validationMessage} />
+          <ValidationError validationMessage={null} />
           <StyledTextField
             required
             id='password'
             value={password}
-            onChange={handleChangeAndValidation}
+            onChange={handleChange}
             margin='normal'
             type='password'
             label='Password'
@@ -65,7 +62,7 @@ const AccountInfo = props => {
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
             variant='contained'
-            disabled={!(valid.nick && valid.email && valid.password)}
+            disabled={!(nick && email && password)}
           >
             Next Step
           </StyledButton>
