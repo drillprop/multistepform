@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import {
-  StyledPaper,
-  StyledH3,
-  StyledTextField,
-  StyledButton,
-  StyledErrorText
-} from './styles';
+import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
+import ValidationError from './ValidationError';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
   const [validationMessage, setValidationMessage] = useState('');
-  const [valid, setValidation] = useState(true);
+  const [valid, setValidation] = useState({
+    nick: false,
+    email: false,
+    password: false
+  });
   const handleChangeAndValidation = e => {
     const { id, value } = e.currentTarget;
-    setValidation(e.target.validity.valid);
+    setValidation({ ...valid, [id]: e.target.validity.valid });
     setField(id, value);
+    console.log(valid);
   };
+
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -50,14 +51,7 @@ const AccountInfo = props => {
             type='email'
             label='Email'
           />
-          <StyledErrorText
-            color='error'
-            variant='caption'
-            display='block'
-            gutterBottom
-          >
-            {validationMessage}
-          </StyledErrorText>
+          <ValidationError validationMessage={validationMessage} />
           <StyledTextField
             required
             id='password'
@@ -71,7 +65,7 @@ const AccountInfo = props => {
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
             variant='contained'
-            disabled={!(nick && email && password) || !valid}
+            disabled={!(valid.nick && valid.email && valid.password)}
           >
             Next Step
           </StyledButton>
