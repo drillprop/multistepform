@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
-import { everyoneTrue } from '../../utils/helpers';
+import { everyoneTrue, atLeastOneTrue } from '../../utils/helpers';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
+  const [isValid, checkValidation] = useState({
+    nick: false,
+    email: false,
+    password: false
+  });
   const [errors, setValidationError] = useState({
     nick: '',
     email: '',
     password: ''
   });
-  const [valid, checkValidation] = useState({
-    nick: false,
-    email: false,
-    password: false
-  });
   const handleChange = e => {
     const { id, value } = e.currentTarget;
+    const { valid } = e.target.validity;
     setField(id, value);
+    checkIfValid(id, valid);
   };
 
+  const checkIfValid = (id, valid) => {
+    checkValidation({ ...isValid, [id]: valid });
+  };
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -60,7 +65,7 @@ const AccountInfo = props => {
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
             variant='contained'
-            disabled={!everyoneTrue({ nick, email, password })}
+            disabled={!everyoneTrue(isValid)}
           >
             Next Step
           </StyledButton>
