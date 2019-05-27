@@ -19,12 +19,20 @@ const AccountInfo = props => {
   const handleChange = e => {
     const { id, value } = e.currentTarget;
     const { valid } = e.target.validity;
+    const { validationMessage } = e.target;
     setField(id, value);
     checkIfValid(id, valid);
   };
 
   const checkIfValid = (id, valid) => {
     checkValidation({ ...isValid, [id]: valid });
+  };
+
+  const showValidationError = e => {
+    const { id, value } = e.currentTarget;
+    const { validationMessage } = e.target;
+    if (value) setValidationError({ ...errors, [id]: validationMessage });
+    console.log(errors);
   };
   return (
     <StyledPaper elevation={4}>
@@ -37,6 +45,8 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={nick}
+            onBlur={showValidationError}
+            helperText={!isValid.nick && errors.nick}
             id='nick'
             onChange={handleChange}
             autoFocus={true}
@@ -46,6 +56,8 @@ const AccountInfo = props => {
           <StyledTextField
             required
             value={email}
+            onBlur={showValidationError}
+            helperText={!isValid.email && errors.email}
             id='email'
             onChange={handleChange}
             margin='normal'
@@ -56,6 +68,8 @@ const AccountInfo = props => {
             required
             id='password'
             value={password}
+            onBlur={showValidationError}
+            helperText={!isValid.password && errors.password}
             onChange={handleChange}
             margin='normal'
             type='password'
