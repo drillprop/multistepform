@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
-import ValidationError from './ValidationError';
+import { everyoneTrue } from '../../utils/helpers';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
-  const [valid, setValidation] = useState({
+  const [errors, setValidationError] = useState({
+    nick: '',
+    email: '',
+    password: ''
+  });
+  const [valid, checkValidation] = useState({
     nick: false,
     email: false,
     password: false
@@ -38,17 +43,10 @@ const AccountInfo = props => {
             value={email}
             id='email'
             onChange={handleChange}
-            // error={!!validationMessage}
-            // onFocus={() => setValidationMessage('')}
-            // onBlur={e =>
-            //   e.currentTarget.value &&
-            //   setValidationMessage(e.target.validationMessage)
-            // }
             margin='normal'
             type='email'
             label='Email'
           />
-          <ValidationError validationMessage={null} />
           <StyledTextField
             required
             id='password'
@@ -62,7 +60,7 @@ const AccountInfo = props => {
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
             variant='contained'
-            disabled={!(nick && email && password)}
+            disabled={!everyoneTrue({ nick, email, password })}
           >
             Next Step
           </StyledButton>
