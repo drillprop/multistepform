@@ -3,18 +3,11 @@ import React, { useState } from 'react';
 import { everyoneTrue } from '../../utils/helpers';
 import { StyledButton, StyledH3, StyledPaper } from './styles';
 import TextInput from './TextInput';
+import InputsWrapper from './InputsWrapper';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setActiveStep, activeStep } = props;
-  const [isValid, checkValidation] = useState({
-    nick: !!nick || false,
-    email: !!email || false,
-    password: !!password || false
-  });
-  const checkIfValid = (id, valid) => {
-    checkValidation({ ...isValid, [id]: valid });
-  };
   return (
     <StyledPaper elevation={4}>
       <form autoComplete='off'>
@@ -23,35 +16,41 @@ const AccountInfo = props => {
           <StyledH3 color='primary' variant='h3'>
             Account
           </StyledH3>
-          <TextInput
-            checkIfValid={checkIfValid}
-            isValid={isValid}
-            inputValue={nick}
-            inputId='nick'
-            type='text'
-          />
-          <TextInput
-            checkIfValid={checkIfValid}
-            isValid={isValid}
-            inputValue={email}
-            inputId='email'
-            type='email'
-          />
-          <TextInput
-            checkIfValid={checkIfValid}
-            isValid={isValid}
-            inputValue={password}
-            inputId='password'
-            type='password'
-          />
-          <StyledButton
-            onClick={() => setActiveStep(activeStep, 1)}
-            color='primary'
-            variant='contained'
-            disabled={!everyoneTrue(isValid)}
-          >
-            Next Step
-          </StyledButton>
+          <InputsWrapper obj={{ nick, email, password }}>
+            {(checkIfValid, isValid) => (
+              <>
+                <TextInput
+                  checkIfValid={checkIfValid}
+                  isValid={isValid}
+                  inputValue={nick}
+                  inputId='nick'
+                  type='text'
+                />
+                <TextInput
+                  checkIfValid={checkIfValid}
+                  isValid={isValid}
+                  inputValue={email}
+                  inputId='email'
+                  type='email'
+                />
+                <TextInput
+                  checkIfValid={checkIfValid}
+                  isValid={isValid}
+                  inputValue={password}
+                  inputId='password'
+                  type='password'
+                />
+                <StyledButton
+                  onClick={() => setActiveStep(activeStep, 1)}
+                  color='primary'
+                  variant='contained'
+                  disabled={!everyoneTrue(isValid)}
+                >
+                  Next Step
+                </StyledButton>
+              </>
+            )}
+          </InputsWrapper>
         </Grid>
       </form>
     </StyledPaper>
