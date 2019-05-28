@@ -4,3 +4,15 @@ export const atLeastOneTrue = obj => {
 export const everyoneTrue = obj => {
   return Object.values(obj).every(Boolean);
 };
+
+export const capitalize = string => {
+  const splitedToWords = string.split(' ');
+  const capitalizeFirstLetter = splitedToWords.map(word => {
+    const letters = word.split('');
+    const capitalized = [letters[0].toUpperCase(), ...letters.slice(1)].join(
+      ''
+    );
+    return capitalized;
+  });
+  return capitalizeFirstLetter.join(' ');
+};
