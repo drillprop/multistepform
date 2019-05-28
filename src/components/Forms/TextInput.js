@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 import { everyoneTrue, atLeastOneTrue } from '../../utils/helpers';
 
-const Input = ({ inputValue, inputId, setField, type }) => {
+const TextInput = ({ inputValue, inputId, setField, type }) => {
   const [isValid, checkValidation] = useState({
     [inputId]: false
   });
@@ -41,4 +41,4 @@ const Input = ({ inputValue, inputId, setField, type }) => {
   );
 };
 
-export default Input;
+export default TextInput;
