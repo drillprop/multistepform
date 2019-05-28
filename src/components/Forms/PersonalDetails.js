@@ -14,6 +14,9 @@ import {
   StyledButton,
   StyledRadioGroup
 } from './styles';
+import InputsWrapper from './InputsWrapper';
+import TextInput from './TextInput';
+import { everyoneTrue } from '../../utils/helpers';
 
 const PersonalDetails = props => {
   const { firstName, secondName, dateOfBirth, gender } = props.user;
@@ -26,64 +29,65 @@ const PersonalDetails = props => {
           <StyledH3 color='primary' variant='h3'>
             Details
           </StyledH3>
-
-          <StyledTextField
-            required
-            value={firstName}
-            onChange={e => setField('firstName', e.currentTarget.value)}
-            autoFocus={true}
-            margin='normal'
-            type='text'
-            label='First Name'
-          />
-          <StyledTextField
-            value={secondName}
-            onChange={e => setField('secondName', e.currentTarget.value)}
-            margin='normal'
-            type='text'
-            label='Second Name'
-          />
-          <StyledRadioGroup>
-            <InputLabel display='block'>Gender</InputLabel>
-            <FormGroup row>
-              <FormControlLabel
-                checked={gender === 'male'}
-                onChange={() => setField('gender', 'male')}
-                label='Male'
-                control={<Radio color='primary' />}
-              />
-              <FormControlLabel
-                checked={gender === 'female'}
-                onChange={() => setField('gender', 'female')}
-                label='Female'
-                control={<Radio />}
-              />
-            </FormGroup>
-          </StyledRadioGroup>
-          <StyledTextField
-            InputLabelProps={{ shrink: true }}
-            value={dateOfBirth}
-            onChange={e => setField('dateOfBirth', e.currentTarget.value)}
-            margin='normal'
-            type='date'
-            label='Date of Birth'
-          />
-          <Grid container justify='space-around'>
-            <StyledButton
-              onClick={() => setActiveStep(activeStep, -1)}
-              variant='contained'
-            >
-              Back
-            </StyledButton>
-            <StyledButton
-              onClick={() => setActiveStep(activeStep, 1)}
-              color='primary'
-              variant='contained'
-              disabled={!(firstName && secondName && gender && dateOfBirth)}
-            >
-              Next Step
-            </StyledButton>
-          </Grid>
+          <InputsWrapper fields={{ firstName, secondName }}>
+            {(checkIfValid, isValid) => (
+              <>
+                <TextInput
+                  inputValue={firstName}
+                  checkIfValid={checkIfValid}
+                  isValid={isValid}
+                  inputId='firstName'
+                />
+                <TextInput
+                  inputValue={secondName}
+                  checkIfValid={checkIfValid}
+                  isValid={isValid}
+                  inputId='secondName'
+                />
+                <StyledRadioGroup>
+                  <InputLabel display='block'>Gender</InputLabel>
+                  <FormGroup row>
+                    <FormControlLabel
+                      checked={gender === 'male'}
+                      onChange={() => setField('gender', 'male')}
+                      label='Male'
+                      control={<Radio color='primary' />}
+                    />
+                    <FormControlLabel
+                      checked={gender === 'female'}
+                      onChange={() => setField('gender', 'female')}
+                      label='Female'
+                      control={<Radio />}
+                    />
+                  </FormGroup>
+                </StyledRadioGroup>
+                <TextInput
+                  inputValue={dateOfBirth}
+                  checkIfValid={checkIfValid}
+                  isValid={isValid}
+                  inputId='dateOfBirth'
+                  InputLabelProps={{ shrink: true }}
+                  type='date'
+                />
+                <Grid container justify='space-around'>
+                  <StyledButton
+                    onClick={() => setActiveStep(activeStep, -1)}
+                    variant='contained'
+                  >
+                    Back
+                  </StyledButton>
+                  <StyledButton
+                    onClick={() => setActiveStep(activeStep, 1)}
+                    color='primary'
+                    variant='contained'
+                    disabled={!everyoneTrue(isValid) || !gender}
+                  >
+                    Next Step
+                  </StyledButton>
+                </Grid>
+              </>
+            )}
+          </InputsWrapper>
         </Grid>
       </form>
     </StyledPaper>
