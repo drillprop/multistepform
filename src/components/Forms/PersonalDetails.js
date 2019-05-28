@@ -28,7 +28,7 @@ const PersonalDetails = props => {
           <StyledH3 color='primary' variant='h3'>
             Details
           </StyledH3>
-          <InputsWrapper fields={{ firstName, secondName }}>
+          <InputsWrapper fields={{ firstName, secondName, dateOfBirth }}>
             {(checkIfValid, isValid) => (
               <>
                 <TextInput
@@ -79,7 +79,7 @@ const PersonalDetails = props => {
                     onClick={() => setActiveStep(activeStep, 1)}
                     color='primary'
                     variant='contained'
-                    disabled={!everyoneTrue(isValid) || !gender}
+                    disabled={!everyoneTrue(isValid)}
                   >
                     Next Step
                   </StyledButton>
