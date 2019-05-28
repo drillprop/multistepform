@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 import { everyoneTrue, atLeastOneTrue } from '../../utils/helpers';
+import { connect } from 'react-redux';
+import actions from '../../duck/actions';
 
 const TextInput = ({ inputValue, inputId, setField, type }) => {
   const [isValid, checkValidation] = useState({
@@ -41,4 +43,11 @@ const TextInput = ({ inputValue, inputId, setField, type }) => {
   );
 };
 
-export default TextInput;
+const mapDispatchToProps = dispatch => ({
+  setField: (text, field) => dispatch(actions.setField(text, field))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(TextInput);
