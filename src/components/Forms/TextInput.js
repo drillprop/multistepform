@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyledTextField } from './styles';
 import { connect } from 'react-redux';
 import actions from '../../duck/actions';
+import { capitalize } from '../../utils/helpers';
 
 const TextInput = ({
   inputValue,
@@ -36,7 +37,7 @@ const TextInput = ({
       onChange={handleChange}
       type={type}
       margin='normal'
-      label={inputId}
+      label={capitalize(inputId)}
     />
   );
 };
