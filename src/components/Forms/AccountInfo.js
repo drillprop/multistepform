@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
 import { everyoneTrue, atLeastOneTrue } from '../../utils/helpers';
+import TextInput from './TextInput';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
@@ -39,7 +40,10 @@ const AccountInfo = props => {
           <StyledH3 color='primary' variant='h3'>
             Account
           </StyledH3>
-          <StyledTextField
+          <TextInput inputValue={nick} inputId='nick' type='text' />
+          <TextInput inputValue={email} inputId='email' type='email' />
+          <TextInput inputValue={password} inputId='password' type='password' />
+          {/* <StyledTextField
             required
             value={nick}
             onBlur={checkValidationError}
@@ -74,7 +78,7 @@ const AccountInfo = props => {
             margin='normal'
             type='password'
             label='Password'
-          />
+          /> */}
           <StyledButton
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
