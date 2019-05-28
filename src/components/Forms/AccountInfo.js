@@ -6,31 +6,14 @@ import TextInput from './TextInput';
 
 const AccountInfo = props => {
   const { nick, email, password } = props.user;
-  const { setField, setActiveStep, activeStep } = props;
+  const { setActiveStep, activeStep } = props;
   const [isValid, checkValidation] = useState({
     nick: !!nick || false,
     email: !!email || false,
-    password: !!password || true
-  });
-  const [errors, setValidationError] = useState({
-    nick: '',
-    email: '',
-    password: ''
+    password: !!password || false
   });
   const checkIfValid = (id, valid) => {
     checkValidation({ ...isValid, [id]: valid });
-  };
-  const handleChange = e => {
-    const { id, value } = e.currentTarget;
-    const { valid } = e.target.validity;
-    setField(id, value);
-    checkIfValid(id, valid);
-  };
-
-  const checkValidationError = e => {
-    const { id, value } = e.currentTarget;
-    const { validationMessage } = e.target;
-    if (value) setValidationError({ ...errors, [id]: validationMessage });
   };
   return (
     <StyledPaper elevation={4}>
@@ -40,45 +23,27 @@ const AccountInfo = props => {
           <StyledH3 color='primary' variant='h3'>
             Account
           </StyledH3>
-          <TextInput inputValue={nick} inputId='nick' type='text' />
-          <TextInput inputValue={email} inputId='email' type='email' />
-          <TextInput inputValue={password} inputId='password' type='password' />
-          {/* <StyledTextField
-            required
-            value={nick}
-            onBlur={checkValidationError}
-            helperText={!isValid.nick && errors.nick}
-            error={!!(!isValid.nick && errors.nick)}
-            id='nick'
-            onChange={handleChange}
-            autoFocus={true}
-            margin='normal'
-            label='Nick'
+          <TextInput
+            checkIfValid={checkIfValid}
+            isValid={isValid}
+            inputValue={nick}
+            inputId='nick'
+            type='text'
           />
-          <StyledTextField
-            required
-            value={email}
-            onBlur={checkValidationError}
-            helperText={!isValid.email && errors.email}
-            error={!!(!isValid.email && errors.email)}
-            id='email'
-            onChange={handleChange}
-            margin='normal'
+          <TextInput
+            checkIfValid={checkIfValid}
+            isValid={isValid}
+            inputValue={email}
+            inputId='email'
             type='email'
-            label='Email'
           />
-          <StyledTextField
-            required
-            id='password'
-            value={password}
-            onBlur={checkValidationError}
-            helperText={!isValid.password && errors.password}
-            error={!!(!isValid.nick && errors.nick)}
-            onChange={handleChange}
-            margin='normal'
+          <TextInput
+            checkIfValid={checkIfValid}
+            isValid={isValid}
+            inputValue={password}
+            inputId='password'
             type='password'
-            label='Password'
-          /> */}
+          />
           <StyledButton
             onClick={() => setActiveStep(activeStep, 1)}
             color='primary'
