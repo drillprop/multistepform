@@ -7,9 +7,9 @@ const AccountInfo = props => {
   const { nick, email, password } = props.user;
   const { setField, setActiveStep, activeStep } = props;
   const [isValid, checkValidation] = useState({
-    nick: false,
-    email: false,
-    password: false
+    nick: !!nick || false,
+    email: !!email || false,
+    password: !!password || true
   });
   const [errors, setValidationError] = useState({
     nick: '',
