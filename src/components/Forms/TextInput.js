@@ -10,7 +10,9 @@ const TextInput = ({
   setField,
   type,
   checkIfValid,
-  isValid
+  aditionalProps,
+  isValid = false,
+  ...props
 }) => {
   const [errors, setValidationError] = useState({
     [inputId]: ''
@@ -28,6 +30,7 @@ const TextInput = ({
   };
   return (
     <StyledTextField
+      {...props}
       required
       value={inputValue}
       onBlur={checkValidationError}
@@ -37,7 +40,7 @@ const TextInput = ({
       onChange={handleChange}
       type={type}
       margin='normal'
-      label={capitalize(inputId)}
+      label={inputId && capitalize(inputId)}
     />
   );
 };
