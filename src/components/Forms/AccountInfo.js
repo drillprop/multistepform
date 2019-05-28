@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { StyledPaper, StyledH3, StyledTextField, StyledButton } from './styles';
-import { everyoneTrue, atLeastOneTrue } from '../../utils/helpers';
+import React, { useState } from 'react';
+import { everyoneTrue } from '../../utils/helpers';
+import { StyledButton, StyledH3, StyledPaper } from './styles';
 import TextInput from './TextInput';
 
 const AccountInfo = props => {
