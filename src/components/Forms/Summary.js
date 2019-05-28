@@ -1,6 +1,6 @@
+import { Divider, Grid, List, ListItem, Typography } from '@material-ui/core';
 import React from 'react';
-import { Grid, Typography, List, ListItem, Divider } from '@material-ui/core';
-import { StyledPaper, StyledH3, StyledButton } from './styles';
+import { StyledButton, StyledH3, StyledPaper } from './styles';
 
 const Summary = ({ user, setActiveStep, activeStep }) => {
   const data = Object.entries(user);

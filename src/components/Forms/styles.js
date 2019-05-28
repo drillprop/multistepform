@@ -1,5 +1,5 @@
+import { Button, Paper, TextField, Typography } from '@material-ui/core';
 import styled from 'styled-components';
-import { Paper, TextField, Button, Typography } from '@material-ui/core';
 
 const StyledPaper = styled(Paper)`
   width: 28rem;

@@ -1,22 +1,21 @@
-import React from 'react';
 import {
+  FormControlLabel,
+  FormGroup,
   Grid,
-  Typography,
   InputLabel,
   Radio,
-  FormControlLabel,
-  FormGroup
+  Typography
 } from '@material-ui/core';
+import React from 'react';
+import { everyoneTrue } from '../../utils/helpers';
+import InputsWrapper from './InputsWrapper';
 import {
-  StyledPaper,
-  StyledH3,
-  StyledTextField,
   StyledButton,
+  StyledH3,
+  StyledPaper,
   StyledRadioGroup
 } from './styles';
-import InputsWrapper from './InputsWrapper';
 import TextInput from './TextInput';
-import { everyoneTrue } from '../../utils/helpers';
 
 const PersonalDetails = props => {
   const { firstName, secondName, dateOfBirth, gender } = props.user;

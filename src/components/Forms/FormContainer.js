@@ -1,10 +1,10 @@
 import React from 'react';
-import AccountInfo from './AccountInfo';
 import { connect } from 'react-redux';
+import { animated, useTransition } from 'react-spring';
 import actions from '../../duck/actions';
-import PersonalDetails from './PersonalDetails';
+import AccountInfo from './AccountInfo';
 import Adress from './Adress';
-import { useTransition, animated } from 'react-spring';
+import PersonalDetails from './PersonalDetails';
 import Summary from './Summary';
 
 const FormContainer = props => {

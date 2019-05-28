@@ -1,8 +1,8 @@
-import React from 'react';
-import Stepper from '@material-ui/core/Stepper';
+import { Grid, Paper } from '@material-ui/core';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import { Grid, Paper } from '@material-ui/core';
+import Stepper from '@material-ui/core/Stepper';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledGrid = styled(Grid)`
