@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import { everyoneTrue } from '../../utils/helpers';
 import { StyledButton, StyledH3, StyledPaper } from './styles';
 import TextInput from './TextInput';
@@ -16,7 +16,7 @@ const AccountInfo = props => {
           <StyledH3 color='primary' variant='h3'>
             Account
           </StyledH3>
-          <InputsWrapper obj={{ nick, email, password }}>
+          <InputsWrapper fields={{ nick, email, password }}>
             {(checkIfValid, isValid) => (
               <>
                 <TextInput
