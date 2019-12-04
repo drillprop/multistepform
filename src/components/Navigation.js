@@ -5,7 +5,7 @@ import React from 'react';
 
 const Navigation = () => {
   return (
-    <AppBar>
+    <AppBar position='static'>
       <Toolbar>
         <Typography variant='h6' color='inherit'>
           Register
