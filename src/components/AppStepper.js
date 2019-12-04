@@ -1,12 +1,12 @@
-import { Grid, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Stepper from '@material-ui/core/Stepper';
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledGrid = styled(Grid)`
-  width: 28rem;
+const Container = styled.div`
+  width: 400px;
   && {
     margin-bottom: 2.5rem;
   }
@@ -15,7 +15,7 @@ const StyledGrid = styled(Grid)`
 const AppStepper = ({ activeStep }) => {
   const steps = ['Account', 'Personal', 'Adress'];
   return (
-    <StyledGrid item xs={8} xl={12}>
+    <Container>
       <Paper elevation={1}>
         <Stepper orientation='horizontal' activeStep={activeStep}>
           {steps.map(step => (
@@ -25,7 +25,7 @@ const AppStepper = ({ activeStep }) => {
           ))}
         </Stepper>
       </Paper>
-    </StyledGrid>
+    </Container>
   );
 };
 
