@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { animated, useTransition } from 'react-spring';
 import actions from '../../duck/actions';
-import AccountInfo from './AccountInfo';
-import Adress from './Adress';
-import PersonalDetails from './PersonalDetails';
-import Summary from './Summary';
+const AccountInfo = lazy(() => import('./AccountInfo'));
+const Adress = lazy(() => import('./Adress'));
+const PersonalDetails = lazy(() => import('./PersonalDetails'));
+const Summary = lazy(() => import('./Summary'));
 
 const FormContainer = props => {
   const steps = [
@@ -21,7 +21,7 @@ const FormContainer = props => {
   });
   return transitions.map(({ item, key, props }) => (
     <animated.div style={props} key={item}>
-      {steps[item]}
+      <Suspense fallback={null}>{steps[item]}</Suspense>
     </animated.div>
   ));
 };
@@ -36,7 +36,4 @@ const mapDispatchToProps = dispatch => ({
   setActiveStep: (activeStep, number) =>
     dispatch(actions.setActiveStep(activeStep, number))
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);
