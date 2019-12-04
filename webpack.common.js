@@ -7,7 +7,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
   },
-
   module: {
     rules: [
       {
@@ -16,10 +15,9 @@ module.exports = {
       }
     ]
   },
-  mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: 'src/index.html'
     })
   ]
 };
