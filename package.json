@@ -1,11 +1,13 @@
 {
   "name": "multistepform",
   "version": "1.0.0",
+  "homepage": "https://drillprop.github.io/multistepform",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server src/index.js --mode development --config webpack.dev.js",
-    "build": "webpack --mode production --config webpack.prod.js"
+    "build": "webpack --mode production --config webpack.prod.js",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +27,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.7.1",
+    "gh-pages": "^2.1.1",
     "lodash.debounce": "^4.0.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
