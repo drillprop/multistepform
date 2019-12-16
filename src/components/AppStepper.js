@@ -6,7 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 400px;
+  padding: 2rem 2rem;
   && {
     margin-bottom: 2.5rem;
   }

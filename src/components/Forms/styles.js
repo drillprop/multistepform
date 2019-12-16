@@ -2,8 +2,10 @@ import { Button, Paper, TextField, Typography } from '@material-ui/core';
 import styled from 'styled-components';
 
 const StyledPaper = styled(Paper)`
-  width: 28rem;
-  padding: 3rem 0;
+  padding: 3rem 7rem;
+  @media (max-width: 450px) {
+    padding: 3rem 4rem;
+  }
 `;
 const StyledTextField = styled(TextField)`
   width: 200px;
