@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AppStepper from './AppStepper';
+import AppStepper from '../components/AppStepper';
 
 const AppStepperContainer = ({ activeStep }) => {
   return <AppStepper activeStep={activeStep} />;

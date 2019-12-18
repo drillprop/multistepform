@@ -1,12 +1,14 @@
 import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { animated, useTransition } from 'react-spring';
-import actions from '../../duck/actions';
-import Success from './Success';
-const AccountInfo = lazy(() => import('./AccountInfo'));
-const Adress = lazy(() => import('./Adress'));
-const PersonalDetails = lazy(() => import('./PersonalDetails'));
-const Summary = lazy(() => import('./Summary'));
+import actions from '../duck/actions';
+import Success from '../components/Forms/Success';
+const AccountInfo = lazy(() => import('../components/Forms/AccountInfo'));
+const Adress = lazy(() => import('../components/Forms/Adress'));
+const PersonalDetails = lazy(() =>
+  import('../components/Forms/PersonalDetails')
+);
+const Summary = lazy(() => import('../components/Forms/Summary'));
 
 const FormContainer = props => {
   const steps = [

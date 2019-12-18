@@ -1,8 +1,8 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import AppStepperContainer from './AppStepperContainer';
-import FormContainer from './Forms/FormContainer';
+import AppStepperContainer from '../containers/AppStepperContainer';
+import FormContainer from '../containers/FormContainer';
 
 const StyledGrid = styled(Grid)`
   margin-top: 5rem;
