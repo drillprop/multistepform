@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { animated, useTransition } from 'react-spring';
 import actions from '../../duck/actions';
+import Success from './Success';
 const AccountInfo = lazy(() => import('./AccountInfo'));
 const Adress = lazy(() => import('./Adress'));
 const PersonalDetails = lazy(() => import('./PersonalDetails'));
@@ -12,7 +13,8 @@ const FormContainer = props => {
     <AccountInfo {...props} />,
     <PersonalDetails {...props} />,
     <Adress {...props} />,
-    <Summary {...props} />
+    <Summary {...props} />,
+    <Success {...props} />
   ];
   const transitions = useTransition(props.activeStep, null, {
     from: { opacity: 0, height: 0 },
